@@ -1,18 +1,49 @@
 import { useSelector } from "react-redux";
-import { getCartItemsState } from "../../../../redux/cart/cartSlice";
+import {
+  getCartItemsState,
+  removeAll,
+  removeItem,
+} from "../../../../redux/cart/cartSlice";
 import * as ItemsListStyles from "./styles";
+import { useAppDispatch } from "../../../../hooks/redux";
+import { Product } from "../../../../types/product";
 
 export const ItemsList = () => {
   // useSelector para pegar o estado do carrinho usando a const exportada do cartSlice
   const items = useSelector(getCartItemsState);
+  const dispatch = useAppDispatch();
+
+  const handleRemove = (id: Product["id"]) => {
+    dispatch(removeItem(id));
+  };
 
   return (
     <ItemsListStyles.Container>
-      {items.map((item) => (
-        <li key={item.id}>
-          {item.name} - R$ {item.price}
-        </li>
-      ))}
+      {items.length === 0 ? (
+        <>
+          <h2>Carrinho vazio</h2>
+          <p>Adicione itens ao carrinho desde a página de produtos</p>
+        </>
+      ) : (
+        items.map((item) => (
+          <li key={item.id}>
+            {item.title} - R$ {item.price} - Quantidade: {item.quantity}
+            <br />
+            Total: R${" "}
+            {(item.quantity && (item.price * item.quantity).toFixed(2)) ||
+              item.price}
+            <button type="submit" onClick={() => handleRemove(item.id)}>
+              Remover
+            </button>
+          </li>
+        ))
+      )}
+      <br />
+      {items.length > 0 && (
+        <p>Total: R$ {items.reduce((acc, item) => acc + item.price, 0)}</p>
+      )}
+      <button>Finalizar compra</button>
+      <button onClick={() => dispatch(removeAll())}>Remover tudo</button>
     </ItemsListStyles.Container>
   );
 };

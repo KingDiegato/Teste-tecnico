@@ -8,6 +8,7 @@ export const Header = () => {
       <HeaderStyles.StyledLink to="/wishlist">
         Lista de desejos
       </HeaderStyles.StyledLink>
+      <HeaderStyles.StyledLink to="/product">Produtos</HeaderStyles.StyledLink>
     </HeaderStyles.Container>
   );
 };
