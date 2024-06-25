@@ -4,6 +4,7 @@ import { Cart } from "../pages/cart";
 import { Wishlist } from "../pages/wishlist";
 import { ProductList } from "../pages/productList";
 import { SingleProduct } from "../pages/singleProduct";
+import { NotFound } from "../pages/notFound";
 
 export const Router = () => {
   return (
@@ -16,6 +17,7 @@ export const Router = () => {
         <Route index element={<ProductList />} />
         <Route path="/product/:id" element={<SingleProduct />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
