@@ -1,11 +1,10 @@
-interface IProduct {
-  id: number;
-  name: string;
-  price: number;
-  // Somente um placeholder
-  // Criar arquivo types/product.ts e definir interface IProduct corretamente
+import type { Product } from "./product";
+
+export interface CartState {
+  items: Product[];
+  ammount: number;
 }
 
-export interface ICartState {
-  items: IProduct[];
+export interface FavoriteState {
+  items: Product[];
 }
