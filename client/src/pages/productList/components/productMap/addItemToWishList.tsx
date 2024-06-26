@@ -21,12 +21,7 @@ export const AddToFavorite = ({ product }: { product: Product }) => {
     }
     dispatch(
       addItemToWishList({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        description: product.description,
-        category: product.category,
-        image: product.images[0],
+        ...product,
       })
     );
   };
