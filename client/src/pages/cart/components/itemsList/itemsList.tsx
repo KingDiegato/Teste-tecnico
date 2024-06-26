@@ -8,6 +8,7 @@ import {
 import * as ItemsListStyles from "./styles";
 import { useAppDispatch } from "../../../../hooks/redux";
 import { Product } from "../../../../types/product";
+import { Link } from "react-router-dom";
 
 export const ItemsList = () => {
   // useSelector para pegar o estado do carrinho usando a const exportada do cartSlice
@@ -19,7 +20,7 @@ export const ItemsList = () => {
   };
 
   return (
-    <ItemsListStyles.Container>
+    <ItemsListStyles.CartContainer>
       {items.length === 0 ? (
         <>
           <h2>Carrinho vazio</h2>
@@ -27,8 +28,9 @@ export const ItemsList = () => {
         </>
       ) : (
         items.map((item) => (
-          <li key={item.id}>
-            {item.title} - R$ {item.price} - Quantidade:{" "}
+          <ItemsListStyles.CartItem key={item.id}>
+            <Link to={`/product/${item.id}`}>{item.title}</Link> - R${" "}
+            {item.price} - Quantidade:{" "}
             <input
               type="number"
               id="item_quantity"
@@ -48,14 +50,13 @@ export const ItemsList = () => {
               }
               value={item.quantity}
             />
-            <br />
             Total: R${" "}
             {(item.quantity && (item.price * item.quantity).toFixed(2)) ||
               item.price}
             <button type="submit" onClick={() => handleRemove(item.id)}>
               Remover
             </button>
-          </li>
+          </ItemsListStyles.CartItem>
         ))
       )}
       <br />
@@ -64,6 +65,6 @@ export const ItemsList = () => {
       )}
       <button>Finalizar compra</button>
       <button onClick={() => dispatch(removeAll())}>Remover tudo</button>
-    </ItemsListStyles.Container>
+    </ItemsListStyles.CartContainer>
   );
 };
