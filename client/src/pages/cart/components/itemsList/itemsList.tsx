@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import {
+  addItem,
   getCartItemsState,
   removeAll,
   removeItem,
@@ -27,7 +28,26 @@ export const ItemsList = () => {
       ) : (
         items.map((item) => (
           <li key={item.id}>
-            {item.title} - R$ {item.price} - Quantidade: {item.quantity}
+            {item.title} - R$ {item.price} - Quantidade:{" "}
+            <input
+              type="number"
+              id="item_quantity"
+              onChange={() =>
+                dispatch(
+                  addItem({
+                    ...item,
+                    quantity: Number(
+                      (
+                        document.getElementById(
+                          "item_quantity"
+                        ) as HTMLInputElement
+                      ).value
+                    ),
+                  })
+                )
+              }
+              value={item.quantity}
+            />
             <br />
             Total: R${" "}
             {(item.quantity && (item.price * item.quantity).toFixed(2)) ||
