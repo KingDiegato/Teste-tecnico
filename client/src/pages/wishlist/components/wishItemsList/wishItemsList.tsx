@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../../hooks/redux";
 import { Product } from "../../../../types/product";
 
-export const WithItemsList = () => {
+export const WishItemsList = () => {
   const items = useSelector(getFavoriteItemsState);
   const dispatch = useAppDispatch();
 

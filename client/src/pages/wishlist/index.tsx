@@ -1,10 +1,10 @@
-import { WithItemsList } from "./components/wishItemsList/withItemsList";
+import { WishItemsList } from "./components/wishItemsList/wishItemsList";
 
 export const Wishlist = () => {
   return (
     <>
       <h1>Lista de desejos!</h1>
-      <WithItemsList />
+      <WishItemsList />
       {/* Insira o corpo da página de lista de desejos aqui */}
     </>
   );
