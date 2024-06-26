@@ -7,6 +7,7 @@ import { AddToFavorite } from "./addItemToWishList";
 import { Rating } from "react-simple-star-rating";
 import { AddToCart } from "./addItemToCart";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const FilterProductsList = ({ active }: { active: boolean }) => {
   const filter = useSelector(getSortState);
@@ -38,16 +39,22 @@ export const FilterProductsList = ({ active }: { active: boolean }) => {
         return (
           <div key={product.id}>
             <div>
-              <h1>{product.title}</h1>
+              <h1>
+                <Link to={`/product/${product.id}`}>{product.title}</Link>
+              </h1>
               <AddToFavorite product={product} />
               <p>{product.description}</p>
               <ProductsStyle.ImageContainer>
-                <img
-                  src={product.images[0] || ""}
-                  alt={product.title}
-                  width={200}
-                  height={200}
-                />
+                <Link to={`/product/${product.id}`}>
+                  <img
+                    src={product.images[0] || ""}
+                    alt={product.title}
+                    width={200}
+                    height={200}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </Link>
               </ProductsStyle.ImageContainer>
               <p>{product.price}</p>
               <Rating readonly initialValue={product.rating} />{" "}
