@@ -16,7 +16,9 @@ export const Products = () => {
         <input type="checkbox" onChange={() => setActive(!active)} />
       </label>
       <ProductsStyle.ProductContainer>
-        <FilterProductsList active={active} />
+        <ProductsStyle.ItemsSubGrid>
+          <FilterProductsList active={active} />
+        </ProductsStyle.ItemsSubGrid>
       </ProductsStyle.ProductContainer>
     </>
   );

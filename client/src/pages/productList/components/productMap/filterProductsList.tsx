@@ -38,12 +38,7 @@ export const FilterProductsList = ({ active }: { active: boolean }) => {
       {Products.map((product) => {
         return (
           <div key={product.id}>
-            <div>
-              <h1>
-                <Link to={`/product/${product.id}`}>{product.title}</Link>
-              </h1>
-              <AddToFavorite product={product} />
-              <p>{product.description}</p>
+            <ProductsStyle.CardStyle>
               <ProductsStyle.ImageContainer>
                 <Link to={`/product/${product.id}`}>
                   <img
@@ -56,11 +51,20 @@ export const FilterProductsList = ({ active }: { active: boolean }) => {
                   />
                 </Link>
               </ProductsStyle.ImageContainer>
-              <p>{product.price}</p>
-              <Rating readonly initialValue={product.rating} />{" "}
-              <span>{product.rating}</span>
+              <ProductsStyle.NameContainer>
+                <h2>
+                  <Link to={`/product/${product.id}`}>{product.title}</Link>
+                </h2>
+                <AddToFavorite product={product} />
+              </ProductsStyle.NameContainer>
+              <p>{product.description}</p>
+              <p>R$ - {product.price}</p>
+              <div>
+                <Rating size={20} readonly initialValue={product.rating} />{" "}
+                <span>{product.rating}</span>
+              </div>
               <AddToCart product={product} />
-            </div>
+            </ProductsStyle.CardStyle>
           </div>
         );
       })}
