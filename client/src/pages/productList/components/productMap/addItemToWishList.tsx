@@ -1,3 +1,6 @@
+import * as ProductsStyle from "./styles";
+import { GoHeart, GoHeartFill } from "react-icons/go";
+
 import { useSelector } from "react-redux";
 import {
   addItemToWishList,
@@ -10,6 +13,7 @@ import { Product } from "../../../../types/product";
 export const AddToFavorite = ({ product }: { product: Product }) => {
   const dispatch = useAppDispatch();
   const items = useSelector(getFavoriteItemsState);
+
   const handleWishListState = (product: Product) => {
     if (items.map((item) => item.id).includes(product.id)) {
       dispatch(removeItemFromWishList(product.id));
@@ -27,8 +31,15 @@ export const AddToFavorite = ({ product }: { product: Product }) => {
     );
   };
   return (
-    <button onClick={() => handleWishListState(product)} type="submit">
-      Heart
-    </button>
+    <ProductsStyle.AddToFavorite
+      onClick={() => handleWishListState(product)}
+      type="submit"
+    >
+      {items.map((item) => item.id).includes(product.id) ? (
+        <GoHeartFill size={24} />
+      ) : (
+        <GoHeart size={24} />
+      )}
+    </ProductsStyle.AddToFavorite>
   );
 };
