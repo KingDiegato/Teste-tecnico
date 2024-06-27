@@ -29,6 +29,12 @@ export const ItemsList = () => {
       ) : (
         items.map((item) => (
           <ItemsListStyles.CartItem key={item.id}>
+            <img
+              width={100}
+              height={100}
+              src={item.thumbnail || ""}
+              alt={item.title}
+            />
             <Link to={`/product/${item.id}`}>{item.title}</Link> - R${" "}
             {item.price} - Quantidade:{" "}
             <input
