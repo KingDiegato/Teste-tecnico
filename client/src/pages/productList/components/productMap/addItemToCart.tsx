@@ -12,12 +12,7 @@ export const AddToCart = ({ product }: { product: Product }) => {
   const handleAddToCart = (product: Product) => {
     dispatch(
       addItem({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        description: product.description,
-        category: product.category,
-        image: product.images[0],
+        ...product,
         quantity: 1,
       })
     );

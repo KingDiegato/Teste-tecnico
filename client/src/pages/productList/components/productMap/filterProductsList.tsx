@@ -42,7 +42,7 @@ export const FilterProductsList = ({ active }: { active: boolean }) => {
               <ProductsStyle.ImageContainer>
                 <Link to={`/product/${product.id}`}>
                   <img
-                    src={product.images[0] || ""}
+                    src={product.thumbnail || ""}
                     alt={product.title}
                     width={200}
                     height={200}
