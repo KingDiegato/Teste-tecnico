@@ -9,11 +9,13 @@ import * as ItemsListStyles from "./styles";
 import { useAppDispatch } from "../../../../hooks/redux";
 import { Product } from "../../../../types/product";
 import { Link } from "react-router-dom";
+import { useId } from "react";
 
 export const ItemsList = () => {
   // useSelector para pegar o estado do carrinho usando a const exportada do cartSlice
   const items = useSelector(getCartItemsState);
   const dispatch = useAppDispatch();
+  const qtyId = useId();
 
   const handleRemove = (id: Product["id"]) => {
     dispatch(removeItem(id));
@@ -39,7 +41,9 @@ export const ItemsList = () => {
             {item.price} - Quantidade:{" "}
             <input
               type="number"
-              id="item_quantity"
+              className="item_quantity"
+              id={qtyId + item.id}
+              min={1}
               onChange={() =>
                 dispatch(
                   addItem({
@@ -47,7 +51,7 @@ export const ItemsList = () => {
                     quantity: Number(
                       (
                         document.getElementById(
-                          "item_quantity"
+                          qtyId + item.id
                         ) as HTMLInputElement
                       ).value
                     ),
@@ -56,10 +60,16 @@ export const ItemsList = () => {
               }
               value={item.quantity}
             />
-            Total: R${" "}
-            {(item.quantity && (item.price * item.quantity).toFixed(2)) ||
-              item.price}
-            <button type="submit" onClick={() => handleRemove(item.id)}>
+            <p id="total_price">
+              Total: R${" "}
+              {(item.quantity && (item.price * item.quantity).toFixed(2)) ||
+                item.price}
+            </p>
+            <button
+              type="submit"
+              id="remove_item"
+              onClick={() => handleRemove(item.id)}
+            >
               Remover
             </button>
           </ItemsListStyles.CartItem>
@@ -67,7 +77,12 @@ export const ItemsList = () => {
       )}
       <br />
       {items.length > 0 && (
-        <p>Total: R$ {items.reduce((acc, item) => acc + item.price, 0)}</p>
+        <p>
+          Total: R${" "}
+          {items
+            .reduce((acc, item) => acc + item.price * item.quantity! || 0, 0)
+            .toFixed(2)}
+        </p>
       )}
       <button>Finalizar compra</button>
       <button onClick={() => dispatch(removeAll())}>Remover tudo</button>
