@@ -1,35 +1,31 @@
 import styled from "styled-components";
 
-export const ProductContainer = styled.div`
+export const ProductContainer = styled.section`
   margin: 0 auto;
   max-width: 1280px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
   padding: 1rem;
 `;
 
-export const ItemsSubGrid = styled.div`
+export const ItemsSubGrid = styled.ul`
   display: grid;
-  grid-column: 1/5;
-  grid-template-columns: subgrid;
+  grid-column: span 4;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
-  padding: 1rem;
+  list-style: none;
 `;
 
-export const CardStyle = styled.div`
+export const CardStyle = styled.li`
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 500px;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 6;
   border-radius: 0.25rem;
   padding: 1rem;
-  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const ImageContainer = styled.div`
-  align-self: center;
+  margin: 0 auto;
   max-width: 200px;
   max-height: 200px;
   aspect-ratio: 1 / 1;

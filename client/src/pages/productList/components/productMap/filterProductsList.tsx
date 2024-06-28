@@ -37,35 +37,33 @@ export const FilterProductsList = ({ active }: { active: boolean }) => {
     <>
       {Products.map((product) => {
         return (
-          <div key={product.id}>
-            <ProductsStyle.CardStyle>
-              <ProductsStyle.ImageContainer>
-                <Link to={`/product/${product.id}`}>
-                  <img
-                    src={product.thumbnail || ""}
-                    alt={product.title}
-                    width={200}
-                    height={200}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </Link>
-              </ProductsStyle.ImageContainer>
-              <ProductsStyle.NameContainer>
-                <h2>
-                  <Link to={`/product/${product.id}`}>{product.title}</Link>
-                </h2>
-                <AddToFavorite product={product} />
-              </ProductsStyle.NameContainer>
-              <p>{product.description}</p>
-              <p>R$ - {product.price}</p>
-              <div>
-                <Rating size={20} readonly initialValue={product.rating} />{" "}
-                <span>{product.rating}</span>
-              </div>
-              <AddToCart product={product} />
-            </ProductsStyle.CardStyle>
-          </div>
+          <ProductsStyle.CardStyle key={product.id}>
+            <ProductsStyle.ImageContainer>
+              <Link to={`/product/${product.id}`}>
+                <img
+                  src={product.thumbnail || ""}
+                  alt={product.title}
+                  width={200}
+                  height={200}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </Link>
+            </ProductsStyle.ImageContainer>
+            <ProductsStyle.NameContainer>
+              <h2>
+                <Link to={`/product/${product.id}`}>{product.title}</Link>
+              </h2>
+              <AddToFavorite product={product} />
+            </ProductsStyle.NameContainer>
+            <p>{product.description}</p>
+            <p>R$ - {product.price}</p>
+            <div>
+              <Rating size={20} readonly initialValue={product.rating} />{" "}
+              <span>{product.rating}</span>
+            </div>
+            <AddToCart product={product} />
+          </ProductsStyle.CardStyle>
         );
       })}
     </>

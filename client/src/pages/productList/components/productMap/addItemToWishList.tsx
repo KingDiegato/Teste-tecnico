@@ -9,6 +9,7 @@ import {
 } from "../../../../redux/favorite/favoriteSlice";
 import { useAppDispatch } from "../../../../hooks/redux";
 import { Product } from "../../../../types/product";
+import { toast } from "sonner";
 
 export const AddToFavorite = ({ product }: { product: Product }) => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,8 @@ export const AddToFavorite = ({ product }: { product: Product }) => {
   const handleWishListState = (product: Product) => {
     if (items.map((item) => item.id).includes(product.id)) {
       dispatch(removeItemFromWishList(product.id));
+      toast.warning("Item removido da lista de desejos");
+
       return;
     }
     dispatch(
@@ -24,6 +27,7 @@ export const AddToFavorite = ({ product }: { product: Product }) => {
         ...product,
       })
     );
+    toast.success("Item adicionado a lista de desejos");
   };
   return (
     <ProductsStyle.AddToFavorite
