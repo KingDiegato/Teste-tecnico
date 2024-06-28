@@ -78,3 +78,12 @@ export const NameContainer = styled.div`
     max-width: 200px;
   }
 `;
+
+export const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  margin: 0 auto;
+  align-items: center;
+`;

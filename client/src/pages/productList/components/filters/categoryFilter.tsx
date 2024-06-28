@@ -1,5 +1,6 @@
 import { useAppDispatch } from "../../../../hooks/redux";
 import { sortByCategory } from "../../../../redux/sort/sortSlice";
+import * as FilterStyles from "./filterStyles";
 
 export const CategoryFilter = () => {
   const dispatch = useAppDispatch();
@@ -12,14 +13,18 @@ export const CategoryFilter = () => {
     );
   };
   return (
-    <>
-      <select onChange={(e) => handleCategoryFilter(e.target.value)}>
-        <option value="all">Todos</option>
-        <option value="beauty">Beleza</option>
-        <option value="furniture">Moletom</option>
-        <option value="fragrances">Parfum</option>
-        <option value="groceries">Alimentos</option>
-      </select>
-    </>
+    <FilterStyles.FilterButtons>
+      {categories.map((category) => (
+        <button
+          key={category}
+          onClick={() => handleCategoryFilter(category)}
+          className={category}
+        >
+          {category}
+        </button>
+      ))}
+    </FilterStyles.FilterButtons>
   );
 };
+
+const categories = ["all", "beauty", "furniture", "fragrances", "groceries"];
