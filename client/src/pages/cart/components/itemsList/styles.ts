@@ -2,23 +2,25 @@ import styled from "styled-components";
 
 export const CartContainer = styled.ul`
   list-style: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 4;
   gap: 1rem;
-  flex-direction: column;
-  align-items: center;
   margin: 0 auto;
   padding: 1rem;
   max-width: 1200px;
 `;
 
 export const CartItem = styled.li`
-  display: flex;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 6;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
   padding: 1rem;
-  width: 1200px;
+  max-width: 1200px;
   background-color: white;
   & .item_quantity {
     width: 40px;
@@ -41,5 +43,38 @@ export const CartItem = styled.li`
   }
   & #remove_item:hover {
     background-color: #d32f2f;
+  }
+`;
+
+export const ButtonStyles = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto;
+  & .end_purchase {
+    background-color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  & .end_purchase:hover {
+    background-color: #ccc;
+  }
+  & .end_purchase:focus {
+    outline: none;
+    background-color: #aaa;
+  }
+  & .remove_all {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  & .remove_all:hover {
+    background-color: #d32f2f;
+  }
+  & .remove_all:focus {
+    outline: none;
+    background-color: #b71c1c;
   }
 `;

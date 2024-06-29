@@ -10,6 +10,7 @@ import { useAppDispatch } from "../../../../hooks/redux";
 import { Product } from "../../../../types/product";
 import { Link } from "react-router-dom";
 import { useId } from "react";
+import { toast } from "sonner";
 
 export const ItemsList = () => {
   // useSelector para pegar o estado do carrinho usando a const exportada do cartSlice
@@ -19,15 +20,27 @@ export const ItemsList = () => {
 
   const handleRemove = (id: Product["id"]) => {
     dispatch(removeItem(id));
+    toast.error("Item removido do carrinho");
+  };
+
+  const handleSum = (id: Product["id"], item: Product) => {
+    dispatch(
+      addItem({
+        ...item,
+        quantity: Number(
+          (document.getElementById(qtyId + id) as HTMLInputElement).value
+        ),
+      })
+    );
   };
 
   return (
     <ItemsListStyles.CartContainer>
       {items.length === 0 ? (
-        <>
+        <div style={{ textAlign: "center", width: "200px" }}>
           <h2>Carrinho vazio</h2>
           <p>Adicione itens ao carrinho desde a página de produtos</p>
-        </>
+        </div>
       ) : (
         items.map((item) => (
           <ItemsListStyles.CartItem key={item.id}>
@@ -44,20 +57,7 @@ export const ItemsList = () => {
               className="item_quantity"
               id={qtyId + item.id}
               min={1}
-              onChange={() =>
-                dispatch(
-                  addItem({
-                    ...item,
-                    quantity: Number(
-                      (
-                        document.getElementById(
-                          qtyId + item.id
-                        ) as HTMLInputElement
-                      ).value
-                    ),
-                  })
-                )
-              }
+              onChange={() => handleSum(item.id, item)}
               value={item.quantity}
             />
             <p id="total_price">
@@ -78,14 +78,21 @@ export const ItemsList = () => {
       <br />
       {items.length > 0 && (
         <p>
-          Total: R${" "}
-          {items
-            .reduce((acc, item) => acc + item.price * item.quantity! || 0, 0)
-            .toFixed(2)}
+          <u>Total: </u>
+          <p>
+            R${" "}
+            {items
+              .reduce((acc, item) => acc + item.price * item.quantity! || 0, 0)
+              .toFixed(2)}
+          </p>
         </p>
       )}
-      <button>Finalizar compra</button>
-      <button onClick={() => dispatch(removeAll())}>Remover tudo</button>
+      <ItemsListStyles.ButtonStyles>
+        <button className="end_purchase">Finalizar compra</button>
+        <button className="remove_all" onClick={() => dispatch(removeAll())}>
+          Remover tudo
+        </button>
+      </ItemsListStyles.ButtonStyles>
     </ItemsListStyles.CartContainer>
   );
 };
