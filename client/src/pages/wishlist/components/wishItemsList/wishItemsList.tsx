@@ -73,9 +73,12 @@ export const WishItemsList = () => {
             </p>
 
             <div id="botoeira">
-              <button onClick={() => handleRemove(product.id)} type="submit">
+              <WishListStyles.WishListRemoveButton
+                onClick={() => handleRemove(product.id)}
+                type="submit"
+              >
                 Remover
-              </button>
+              </WishListStyles.WishListRemoveButton>
             </div>
           </WishListStyles.WishListItem>
         ))

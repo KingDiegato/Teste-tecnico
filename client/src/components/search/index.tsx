@@ -23,7 +23,7 @@ export const SearchBar = () => {
         <input
           id="search_products_bar"
           type="text"
-          placeholder="Pesquisar..."
+          placeholder="phones..., computers..., mens-shirts..."
           name="query"
           ref={formRef}
         />

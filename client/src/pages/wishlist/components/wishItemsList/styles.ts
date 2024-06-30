@@ -19,3 +19,19 @@ export const WishListItem = styled.li`
   max-width: 1200px;
   background-color: white;
 `;
+
+export const WishListRemoveButton = styled.button`
+  border: none;
+  background-color: #f72f2f;
+  cursor: pointer;
+  color: white;
+  padding: 0.5rem;
+  transition: 200ms;
+  &:hover {
+    background-color: #d32f2f;
+  }
+  &:focus {
+    outline: none;
+    background-color: #b71c1c;
+  }
+`;
