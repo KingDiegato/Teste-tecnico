@@ -6,6 +6,7 @@ import { ProductList } from "../pages/productList";
 import { SingleProduct } from "../pages/singleProduct";
 import { NotFound } from "../pages/notFound";
 import { Search } from "../pages/search";
+import { Categories } from "../pages/categories";
 
 export const Router = () => {
   return (
@@ -14,6 +15,9 @@ export const Router = () => {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/category">
+        <Route path="/category/:category" element={<Categories />} />
+      </Route>
       <Route path="/product">
         <Route index element={<ProductList />} />
         <Route path="/product/:id" element={<SingleProduct />} />

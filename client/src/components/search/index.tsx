@@ -2,6 +2,7 @@ import { FormEvent, useRef, useState } from "react";
 import { useSearch } from "../../hooks/useSearch";
 import { ProductList } from "../productList";
 import * as ProductListStyle from "../productList/styles";
+import * as SearchStyle from "./styles";
 
 export const SearchBar = () => {
   const formRef = useRef<HTMLInputElement>(null);
@@ -17,8 +18,8 @@ export const SearchBar = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSearch(e)}>
+    <>
+      <SearchStyle.SearchForm onSubmit={(e) => handleSearch(e)}>
         <input
           id="search_products_bar"
           type="text"
@@ -27,7 +28,7 @@ export const SearchBar = () => {
           ref={formRef}
         />
         <button type="submit">Pesquisar</button>
-      </form>
+      </SearchStyle.SearchForm>
       {search && (
         <ProductListStyle.ProductContainer>
           <ProductListStyle.ItemsSubGrid>
@@ -37,6 +38,6 @@ export const SearchBar = () => {
       )}
       {loading && <p>Carregando...</p>}
       {typeof error === "string" && <p>Ups! Something went wrong</p>}
-    </div>
+    </>
   );
 };
