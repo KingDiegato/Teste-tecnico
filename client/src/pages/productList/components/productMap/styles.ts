@@ -38,7 +38,7 @@ export const AddToCart = styled.button`
   align-items: center;
   background-color: #ff6300;
   color: #fff;
-  width: 100%;
+  width: 120px;
   height: 40px;
   border-radius: 0.25rem;
   border: none;
