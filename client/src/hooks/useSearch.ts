@@ -10,7 +10,7 @@ export const useSearch = ({ query }: { query: string }) => {
     const searchProducts = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.API_URL}products/search/${query}`
+          `${import.meta.env.VITE_API_URL}products/search?q=${query}`
         );
         const data = await response.json();
         setSearch(data);
