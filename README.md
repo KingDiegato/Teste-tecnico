@@ -8,7 +8,7 @@ Este projeto é parte de um teste de desenvolvimento para uma plataforma de com�
 
 - Faça um fork do repositório do projeto.
 - Clone o repositório forkado para o seu ambiente local.
-- Utilize *`yarn dev`* para iniciar o frontend.
+- Utilize _`yarn dev`_ para iniciar o frontend.
 - Quando finalizado, envie o link do repositório para dev@acheipneus.com.br.
 
 - A utilização dos templates é opcional
@@ -48,10 +48,39 @@ Este projeto é parte de um teste de desenvolvimento para uma plataforma de com�
 - **Versionamento e Conventional Commits**: Utilize Git/GitHub para versionamento do código e siga uma convenção para os comentários.
 - **Utilizar JSON para produtos**
 
-### Funcionamento da Aplicação
+## Funcionamento da Aplicação
 
-[Adicione aqui uma descrição do funcionamento da aplicação, explicando como as funcionalidades são implementadas e como o usuário pode interagir com elas.]
+### Home page
+
+Desde a página principal, ver as categorias dos produtos e uma barra pra pesquisar especificos
+
+![imagem da página principal](image-home.png)
+
+Ao clicar em qualquer botão referente a uma categoría, pode ver uma lista de produtos referentes a dita categoria
+
+![imagem da página da pesquisa de categoria especifica](image-category-search.png)
+
+No momento de inteagir com os botões do aplicativo, uma memsagem vai aparecer no canto superior e central da tela, dependendo da função e da resposta, uma memsagem diferente vai aparecer.
+
+![toast que possui o aplicativo](image-toast-show.png)
+
+Os usuarios podem conferir no carrinho acima no navbar os items adicionados ao mesmo, éste contém também a posibilidade de serem eliminados, pode adicionar mais unidades e o aplicativo vai calcular o preço
+![conferir carrinho](image-carrinho.png)
+
+Na pagina da lista de desejos, o usuario pode visualizar seus items salvos, remove-los e adicionar ao carrinho direito, também podem ver se o item encontra-se disponível
+
+![conferir lista de desejos](image-wish-list.png)
+
+Em qualquer momento que veja um produto em uma lista, o usuario pode clickar seja no nome quanto na imagem e pode ver mais detalhes e também comentarios dos anteriores compradores.
+
+e gerenciar-los para o carrinho ou para a lista de desejos mesmo.
+
+![single product page](image-single-product.png)
 
 ## Autor
 
-[Seu nome ou informações de contato]
+#### Diego Andres Gonzalez Busnego
+
+[Github](https://github.com/KingDiegato) - Telefone: +55 (47) 9677 3464
+
+Email: gonzalezbusnegobr@gmail.com
