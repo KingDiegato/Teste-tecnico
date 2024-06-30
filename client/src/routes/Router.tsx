@@ -5,6 +5,7 @@ import { Wishlist } from "../pages/wishlist";
 import { ProductList } from "../pages/productList";
 import { SingleProduct } from "../pages/singleProduct";
 import { NotFound } from "../pages/notFound";
+import { Search } from "../pages/search";
 
 export const Router = () => {
   return (
@@ -16,6 +17,9 @@ export const Router = () => {
       <Route path="/product">
         <Route index element={<ProductList />} />
         <Route path="/product/:id" element={<SingleProduct />} />
+      </Route>
+      <Route path="/search" element={<Search />}>
+        <Route path="/search/:query" element={<Search />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

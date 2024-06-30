@@ -9,6 +9,7 @@ export const Header = () => {
         Lista de desejos
       </HeaderStyles.StyledLink>
       <HeaderStyles.StyledLink to="/product">Produtos</HeaderStyles.StyledLink>
+      <HeaderStyles.StyledLink to="/search">Pesquisa</HeaderStyles.StyledLink>
     </HeaderStyles.Container>
   );
 };
